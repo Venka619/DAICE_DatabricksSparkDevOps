@@ -8,6 +8,6 @@
     "timeout_seconds": 3600,
     "max_retries": 1,
     "notebook_task":{
-        "notebook_path":"/example"
+        "notebook_path":"/SparkSimpleNotebook"
     }
   }

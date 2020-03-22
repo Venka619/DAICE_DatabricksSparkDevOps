@@ -33,9 +33,9 @@ if __name__ == "__main__":
         choices=["jar","egg", "notebook"],
         help="Valid options are jar, egg, or notebook")
     parser.add_argument('library_path',
-        help="The library or folder containing libraries to include")
+        help="The library or folder containing libraries to include. Use na for no libraries.")
     parser.add_argument('cloud_path',
-        help="The path in the cloud (e.g. DBFS, WASB) that the library is located")
+        help="The path in the cloud (e.g. DBFS, WASB) that the library is located. Use na for no libraries.")
     parser.add_argument('job_json',
         help="The path to the job definition (only applicable to Databricks)")
     parser.add_argument('--python-file',
@@ -112,7 +112,7 @@ if __name__ == "__main__":
             if len(args.parameters) % 2 != 0:
                 raise IndexError("Parameters passed into a notebook task must be an even number of attributes as it assumes key, value pairs")
             
-            pair_indexes = [x for x in len(args.parameters) if x %2 == 0]
+            pair_indexes = [x for x in range(len(args.parameters)) if x %2 == 0]
             
             job_def[objective_task_name].update(
                 {"base_parameters": {args.parameters[x]:args.parameters[x+1] for x in pair_indexes }}
