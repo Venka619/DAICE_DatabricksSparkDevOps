@@ -161,9 +161,10 @@ if __name__ == "__main__":
         deployment_command.extend( ['--profile', args.profile])
     
     print('Attempting to run:\n{}'.format(' '.join(deployment_command)))
-    call_results = subprocess.run(deployment_command, stdout=subprocess.PIPE).stdout
-    print(call_results)
+    call_results = subprocess.run(deployment_command, stdout=subprocess.PIPE, encoding="utf-8").stdout
 
-
-
+    if call_results.lower().startswith("error"):
+        raise Exception("The Databricks Job deployment failed with error: {}".format(call_results))
+    else:
+        print(call_results)
     

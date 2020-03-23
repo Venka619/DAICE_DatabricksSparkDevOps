@@ -6,8 +6,5 @@
       "num_workers": 1
     },
     "timeout_seconds": 3600,
-    "max_retries": 1,
-    "notebook_task":{
-        "notebook_path":"/SparkSimpleNotebook"
-    }
+    "max_retries": 1
   }
